@@ -1,21 +1,24 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 export default class Buttons extends Component {
   render() {
     const { toggleText, addTranslation, finalCommit } = this.props;
     return (
       <React.Fragment>
-        <button className="btn btn-outline-dark mr-2" onClick={toggleText}>
-          New
-        </button>
-        <button className="btn btn-outline-dark mx-2" onClick={addTranslation}>
-          {" "}
-          Add A Translation
-        </button>
-        <button className="btn btn-outline-dark mx-2" onClick={finalCommit}>
-          Commit
-        </button>
+        <Button onClick={toggleText}>New</Button>
+        <Button onClick={addTranslation}> Add A Translation</Button>
+        <Button onClick={finalCommit}>Commit</Button>
       </React.Fragment>
     );
   }
 }
+
+const Button = styled.div`
+  color: green;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+`;

@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <div className=" overflow-hidden container-fluid vw-100 vh-100">
         <div className="row">
-          <div className="d-flex flex-column col-3">
+          <div className="d-flex flex-column col-3 border-right">
             <HomeDropdown />
             <VocabList />
             <AwardButton>

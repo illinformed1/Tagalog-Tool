@@ -7,7 +7,7 @@ export default class Home extends Component {
     return (
       <div className="container-fluid vh-100 d-flex">
         <div className="row">
-          <div className="col-12 d-inline-block my-auto">
+          <div className="col-12 d-inline-block ">
             <Button>
               <NavLink to="/taglishgenerator" className="link">
                 <i style={{ fontSize: "10rem" }} className="fas fa-cogs icon" />
@@ -37,10 +37,28 @@ export default class Home extends Component {
 
             <Button>
               <NavLink to="/verb" className="link">
-                <i
-                  style={{ fontSize: "10rem" }}
-                  className="fas fa-running icon"
-                />
+                <i style={{ fontSize: "10rem" }} className="fas fa-key icon" />
+              </NavLink>
+              <h3>Card Game</h3>
+            </Button>
+
+            <Button>
+              <NavLink to="/verb" className="link">
+                <i style={{ fontSize: "10rem" }} className="fas fa-key lock" />
+              </NavLink>
+              <h3>Speaking Exercises</h3>
+            </Button>
+
+            <Button>
+              <NavLink to="/verb" className="link">
+                <i style={{ fontSize: "10rem" }} className="fas fa-key lock" />
+              </NavLink>
+              <h3>Story Time</h3>
+            </Button>
+
+            <Button>
+              <NavLink to="/verb" className="link">
+                <i style={{ fontSize: "10rem" }} className="fas fa-key lock" />
               </NavLink>
               <h3>Verbs</h3>
             </Button>
@@ -51,7 +69,7 @@ export default class Home extends Component {
   }
 }
 
-const Button = styled.a`
+const Button = styled.div`
   /* This renders the buttons above... Edit me! */
   display: inline-block;
   border-radius: 40px;
@@ -75,6 +93,10 @@ const Button = styled.a`
   }
 
   .icon {
+    margin-top: 1rem;
+  }
+  .lock {
+    color: #ffa366;
     margin-top: 1rem;
   }
 `;

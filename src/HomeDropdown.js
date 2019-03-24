@@ -5,10 +5,11 @@ import styled from "styled-components";
 export default class HomeDropdown extends Component {
   state = {
     openMenue: false,
-    hoveringCogs: false,
-    hoveringQuestionare: false,
-    hoveringVerb: false,
-    hoveringPronoun: false
+    hoveringCogs: true,
+    hoveringQuestionare: true,
+    hoveringVerb: true,
+    hoveringPronoun: true,
+    hoveringHome: true
   };
 
   toggleMenue = () => {
@@ -32,12 +33,30 @@ export default class HomeDropdown extends Component {
     if (this.state.openMenue === true) {
       return (
         <React.Fragment>
-          <button
-            onClick={this.toggleMenue}
-            className="btn btn-outline-secondary my-2 mr-2 "
-          >
-            <i className="fas fa-home" />
-          </button>
+          <BurgerButton open={this.state.openMenue} onClick={this.toggleMenue}>
+            <i className="fas fa-hamburger" />
+          </BurgerButton>
+
+          <div onMouseEnter={() => this.onMouseHover("Home")}>
+            {this.state.hoveringCogs === true ? (
+              <Typewriter>
+                <Icon>
+                  <Link to="/">
+                    <i className="icon fas fa-home" />
+                  </Link>
+                </Icon>
+                <div className="display">
+                  <h2>Home</h2>
+                </div>
+              </Typewriter>
+            ) : (
+              <Icon>
+                <Link to="/">
+                  <i className="icon fas fa-home" />
+                </Link>
+              </Icon>
+            )}
+          </div>
 
           {/* ----------------------Below is Taglish Generator ----------------*/}
 
@@ -114,7 +133,7 @@ export default class HomeDropdown extends Component {
             {this.state.hoveringVerb === true ? (
               <Typewriter>
                 <Icon>
-                  <Link to="/verbs">
+                  <Link to="/verb">
                     <i className=" icon1 fas fa-running" />
                   </Link>
                 </Icon>
@@ -124,7 +143,7 @@ export default class HomeDropdown extends Component {
               </Typewriter>
             ) : (
               <Icon>
-                <Link to="/verbs">
+                <Link to="/verb">
                   <i className=" icon1 fas fa-running" />
                 </Link>
               </Icon>
@@ -134,9 +153,9 @@ export default class HomeDropdown extends Component {
       );
     } else {
       return (
-        <HomeButton onClick={this.toggleMenue} className="my-2 mr-2 w-100">
-          <i style={{ fontSize: "3rem" }} className="fas fa-home w-100" />
-        </HomeButton>
+        <BurgerButton onClick={this.toggleMenue}>
+          <i className="fas fa-hamburger" />
+        </BurgerButton>
       );
     }
   }
@@ -145,7 +164,7 @@ export default class HomeDropdown extends Component {
 const Typewriter = styled.div`
   display: flex;
   align-items: center;
-  justify-self: start !important;
+  justify-items: start !important;
 
   .display {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -153,7 +172,7 @@ const Typewriter = styled.div`
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: 0.15em; /* Adjust as needed */
-    animation: typing 3.5s steps(40, end);
+    animation: typing 3.5s steps(80, end);
   }
 
   /* The typing effect */
@@ -162,17 +181,19 @@ const Typewriter = styled.div`
       width: 0;
     }
     to {
-      width: 100%;
+      width: 100vh;
     }
   }
 
   /* The typewriter cursor effect */
 `;
 
-const HomeButton = styled.button`
-  background-color: #428bca;
+const BurgerButton = styled.button`
+  background-color: ${props => (props.open === true ? "orange" : "#428bca")};
   color: white;
-  height: 4rem;
+  height: ${props => (props.open === true ? "2rem" : "4rem")};
+  font-size: ${props => (props.open === true ? "1rem" : "3rem")};
+
   border-radius: 3rem;
   border: 2px solid;
   transition: all 1.5s;
@@ -182,6 +203,9 @@ const HomeButton = styled.button`
   }
   &:focus {
     outline: 0;
+  }
+  &:active {
+    background: orange;
   }
 `;
 

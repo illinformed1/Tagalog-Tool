@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+//import example from "./example.jpg";
 
 export default class TaglishGeneratorIntro extends Component {
   render() {
@@ -8,6 +9,8 @@ export default class TaglishGeneratorIntro extends Component {
         <div className="wrapper 100vh justify-content-center">
           <div className="inner w-100">
             <h2> The Taglish Generator</h2>
+            <div />
+
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Asperiores totam laborum beatae, esse a accusamus fuga
@@ -47,7 +50,8 @@ const Intro = styled.div`
     h2 {
       grid-area: header;
       margin: 2px 2px;
-      text-decoration: underline black;
+      color: orange;
+      font-size: 3.5rem;
       text-align: center;
     }
     p {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Taglish } from "./TaglishData";
 import EvaluatingTextBox from "./EvaluatingTextBox";
 import TaglishGeneratorIntro from "./TaglishGeneratorIntro";
+import styled from "styled-components";
 
 export default class TaglishGenerator extends Component {
   state = {
@@ -11,7 +12,7 @@ export default class TaglishGenerator extends Component {
     answer2: "",
     counter: 1,
     currentAnswers: [],
-    intro: false
+    intro: true
     //push correct answers to this array.
   };
 
@@ -88,29 +89,57 @@ export default class TaglishGenerator extends Component {
     );
     if (this.state.intro === false) {
       return (
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex justify-content-center w-100vh">
           {" "}
           <TaglishGeneratorIntro />
         </div>
       );
     } else {
       return (
-        <div className="row d-flex align-items-center">
-          <div className="col-12 d-flex flex-column align-items-center mx-auto">
-            <div className="card d-flex flex-column w-100 align-items-center">
-              <h2 className="text-capitalize card-header w-100 mx-auto">
-                replace the taglish
-              </h2>
-              <h3>{taglish[progress].taglish}</h3>
-              {textBoxes}
-              <p className="card-footer mt-3">
-                Replace these common taglish words with their filipino
-                equivlents to improve your vocabulary.
-              </p>
-            </div>
+        <TaglishGen>
+          <h2 className="header">replace the taglish</h2>
+          <div className="body">
+            <h3>{taglish[progress].taglish}</h3>
+            {textBoxes}
+
+            <p>
+              Replace these common taglish words with their filipino equivlents
+              to improve your vocabulary.
+            </p>
           </div>
-        </div>
+        </TaglishGen>
       );
     }
   }
 }
+
+const TaglishGen = styled.div`
+  display: grid;
+  height: 75vh;
+  grid-template-columns: repeat(1fr 3);
+  grid-template-areas:
+    "header header header"
+    "body body body"
+    "picture picture picture";
+
+  .header {
+    grid-area: header;
+    font-size: 2rem;
+    text-transform: capitalize;
+    justify-self: center;
+  }
+  .body {
+    grid-area: body;
+
+    input[type="text"] {
+      border: none;
+      border-bottom: 1px solid lightgray;
+
+      width: 75%;
+      text-align: center;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+`;

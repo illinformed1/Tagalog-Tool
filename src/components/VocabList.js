@@ -13,7 +13,8 @@ export default class VocabList extends Component {
     translated: [],
     selector: true,
     toggleText: false,
-    openVocab: false
+    openVocab: false,
+    openSeach: false
   };
 
   finalCommit = () => {
@@ -64,18 +65,15 @@ export default class VocabList extends Component {
 
     if (this.state.openVocab === true) {
       return (
-        <div>
-          <button className="btn btn-outline-dark my-2 mr-2">
-            <i
-              className="fas fa-book"
-              onClick={this.openVocab}
-              style={{ fontSize: "3rem" }}
-            />
-          </button>
-          <Search
-            words={this.state.translated}
-            toggleText={this.state.toggleText}
-          />
+        <React.Fragment>
+          <DictionaryButton
+            toggle={this.state.openVocab}
+            onClick={this.openVocab}
+          >
+            <i className="fas fa-book" />
+          </DictionaryButton>
+          <h3>Add words to the Dictionary</h3>
+
           {toggleText === true ? (
             selector === true ? (
               <TextBox name={"EnglishText"} handleChange={this.handleChange} />
@@ -88,29 +86,37 @@ export default class VocabList extends Component {
             toggleText={this.toggleText}
             finalCommit={this.finalCommit}
           />
+          <Search
+            words={this.state.translated}
+            toggleText={this.state.toggleText}
+          />
           {DictionaryMapping}
-        </div>
+        </React.Fragment>
       );
     } else {
       return (
-        <DictionarButton>
-          <i
-            className="fas fa-book"
-            onClick={this.openVocab}
-            style={{ fontSize: "3rem" }}
-          />
-        </DictionarButton>
+        <DictionaryButton
+          toggle={this.state.openVocab}
+          onClick={this.openVocab}
+        >
+          <i className="fas fa-book" />
+        </DictionaryButton>
       );
     }
   }
 }
 
-const DictionarButton = styled.button`
-  background-color: #428bca;
+const DictionaryButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => (props.toggle === true ? "orange" : "#428bca")};
   color: white;
-  height: 4rem;
+  height: ${props => (props.toggle === true ? "2rem" : "4rem")};
+  font-size: ${props => (props.toggle === true ? "1rem" : "3rem")};
   border-radius: 3rem;
   border: 2px solid;
+  margin: 2rem 0 2rem 0;
   transition: all 1.5s;
   &:hover {
     background-color: orange;
@@ -118,5 +124,8 @@ const DictionarButton = styled.button`
   }
   &:focus {
     outline: 0;
+  }
+  &:active {
+    background: orange;
   }
 `;
