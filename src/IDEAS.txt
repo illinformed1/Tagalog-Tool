@@ -1,0 +1,23 @@
+ToDos
+
+short term
+
+text writing menue
+
+Answers not clearing
+
+
+
+long term
+
+reusabel progress bar that knows how far the user has progressed through each module
+problems :
+/* 
+I need a common source of truth. 
+a progress component in all versions of their state.
+Passed down a props to this component along with a total count
+takes a percent of the two numbers and renders a different colour depending. 
+
+Test that checks knowledge of all words in dictionary. 
+
+community section where people can submit there own word suggestion

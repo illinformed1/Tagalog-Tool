@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Taglish } from "./TaglishData";
 import EvaluatingTextBox from "./EvaluatingTextBox";
+import TaglishGeneratorIntro from "./TaglishGeneratorIntro";
 
 export default class TaglishGenerator extends Component {
   state = {
@@ -9,7 +10,8 @@ export default class TaglishGenerator extends Component {
     answer1: "Hello",
     answer2: "",
     counter: 1,
-    currentAnswers: []
+    currentAnswers: [],
+    intro: false
     //push correct answers to this array.
   };
 
@@ -84,23 +86,31 @@ export default class TaglishGenerator extends Component {
         );
       }
     );
-
-    return (
-      <div className="row vh-100 d-flex align-items-center">
-        <div className="col-10 d-flex flex-column align-items-center mx-auto">
-          <div className="card d-flex flex-column align-items-center">
-            <h2 className="text-capitalize card-header w-100 mx-auto">
-              replace the taglish
-            </h2>
-            <h3>{taglish[progress].taglish}</h3>
-            {textBoxes}
-            <p className="card-footer mt-3">
-              Replace these common taglish words with their filipino equivlents
-              to improve your vocabulary.
-            </p>
+    if (this.state.intro === false) {
+      return (
+        <div className="row d-flex justify-content-center">
+          {" "}
+          <TaglishGeneratorIntro />
+        </div>
+      );
+    } else {
+      return (
+        <div className="row d-flex align-items-center">
+          <div className="col-12 d-flex flex-column align-items-center mx-auto">
+            <div className="card d-flex flex-column w-100 align-items-center">
+              <h2 className="text-capitalize card-header w-100 mx-auto">
+                replace the taglish
+              </h2>
+              <h3>{taglish[progress].taglish}</h3>
+              {textBoxes}
+              <p className="card-footer mt-3">
+                Replace these common taglish words with their filipino
+                equivlents to improve your vocabulary.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }

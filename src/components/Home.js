@@ -1,63 +1,80 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export default class Home extends Component {
   render() {
     return (
-      <div className="container d-flex vh-100">
-        <div className="row w-100 justify-content-center align-self-center">
-          <div
-            className=" col-6 col-md-4 border shadow p-3 mb-5 bg-white rounded text-center mx-3 my-3"
-            style={{ height: "15rem" }}
-          >
-            <Link to="/taglishgenerator">
-              <h2>Taglish Generator</h2>
-              <i
-                style={{ fontSize: "10rem", color: "orange" }}
-                className="fas fa-cogs"
-              />
-            </Link>
-          </div>
+      <div className="container-fluid vh-100 d-flex">
+        <div className="row">
+          <div className="col-12 d-inline-block my-auto">
+            <Button>
+              <NavLink to="/taglishgenerator" className="link">
+                <i style={{ fontSize: "10rem" }} className="fas fa-cogs icon" />
+              </NavLink>
+              <h3>Taglish Generator</h3>
+            </Button>
 
-          <div
-            style={{ height: "15rem" }}
-            className="col-6 col-md-4 border shadow p-3 mb-5 bg-white rounded text-center mx-3 my-3 "
-          >
-            <Link to="/questionare">
-              <h2>Vocabulary</h2>
+            <Button>
+              <NavLink to="/questionare" className="link">
+                <i
+                  style={{ fontSize: "10rem" }}
+                  className="fas fa-brain icon"
+                />
+              </NavLink>
+              <h3>Vocabulary</h3>
+            </Button>
 
-              <i
-                style={{ fontSize: "10rem", color: "orange" }}
-                className="fas fa-brain"
-              />
-            </Link>
-          </div>
-          <div
-            className="col-6 col-md-4 border text-center shadow p-3 mb-5 bg-white rounded mx-3 my-3 "
-            style={{ height: "15rem" }}
-          >
-            <Link to="/pronouns">
-              <h2> Pronouns</h2>
-              <i
-                style={{ fontSize: "10rem", color: "orange" }}
-                className="fas fa-user-tag"
-              />
-            </Link>
-          </div>
-          <div
-            className="col-6 col-md-4  border text-center shadow p-3 mb-5 bg-white rounded mx-3 my-3"
-            style={{ height: "15rem" }}
-          >
-            <Link to="/verbs">
-              <h2>Verbs</h2>
-              <i
-                style={{ fontSize: "10rem", color: "orange" }}
-                className="fas fa-running"
-              />
-            </Link>
+            <Button>
+              <NavLink to="/pronouns" className="link">
+                <i
+                  style={{ fontSize: "10rem" }}
+                  className="fas fa-user-tag icon"
+                />
+              </NavLink>
+              <h3>Pronouns</h3>
+            </Button>
+
+            <Button>
+              <NavLink to="/verb" className="link">
+                <i
+                  style={{ fontSize: "10rem" }}
+                  className="fas fa-running icon"
+                />
+              </NavLink>
+              <h3>Verbs</h3>
+            </Button>
           </div>
         </div>
       </div>
     );
   }
 }
+
+const Button = styled.a`
+  /* This renders the buttons above... Edit me! */
+  display: inline-block;
+  border-radius: 40px;
+  height: 15rem;
+  width: 20rem;
+  margin: 2rem 2rem;
+  text-align: center;
+  font-family: var(--sub-font);
+  background: #428bca;
+  transition: all 1.5s;
+  &:hover {
+    background-color: purple;
+    border: none;
+  }
+  h3 {
+    color: white;
+  }
+  .link {
+    color: orange;
+    text-decoration: none;
+  }
+
+  .icon {
+    margin-top: 1rem;
+  }
+`;

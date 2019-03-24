@@ -1,9 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "ZCOOL QingKe HuangYou", cursive;
+  font-family: "Margarine", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --sub-font: "Lilita One", cursive;
 }
 
 code {
